@@ -216,7 +216,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CameraManager.cs" />
+    <Compile Include="Assets\enemyMovement.cs" />
     <Compile Include="Assets\fuckThisShit.cs" />
+    <Compile Include="Assets\GunManager.cs" />
+    <Compile Include="Assets\PlayerMovement.cs" />
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>

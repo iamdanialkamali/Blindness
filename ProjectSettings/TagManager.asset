@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - player
+  - enemy
+  - stair3
+  - stair2
+  - line
+  - bullet
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,11 @@
     <e p="C:\Users\iamdanialkamali\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Blindness.-1076279750.00" t="ExcludeRecursive" />
     <e p="D:\GameClass\Blindness" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets\CameraManager.cs" t="Include" />
+      <e p="Assets\enemyMovement.cs" t="Include" />
       <e p="Assets\fuckThisShit.cs" t="Include" />
+      <e p="Assets\GunManager.cs" t="Include" />
+      <e p="Assets\PlayerMovement.cs" t="Include" />
       <e p="Blindness.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
