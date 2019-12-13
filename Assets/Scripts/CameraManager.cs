@@ -15,8 +15,8 @@ public class CameraManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-//		cam = GameObject.Find("Main Camera");
-//		player = GameObject.Find("player(Clone)");
-//		cam.transform.position = new Vector3((float)-3.8,player.transform.position.y,-10); ;
+		cam = GameObject.Find("Main Camera");
+		player = GameObject.Find("player(Clone)");
+		cam.transform.position = new Vector3((float)-3.8,player.transform.position.y,-10); ;
 	}
 }

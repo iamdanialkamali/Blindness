@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MrGunManager : MonoBehaviour {
 
@@ -10,18 +11,16 @@ public class MrGunManager : MonoBehaviour {
 	private MapManager mapManager;
 	private PlayerManager playerManager;
 	private EnemyManager enemyManager;
-	private MenuManager menuManager;
 	private bool changing;
 	private bool shooting;
 	private bool shooted;
 	private bool enemyArrived;
 	private bool enemyMoving;
-	private int enemys = 1;
-	private bool started = false;
+	private int enemys = 3;
+	private bool started = true;
 
 	private void Awake()
 	{
-		menuManager = GetComponent<MenuManager>();
 		playerManager = GetComponent<PlayerManager>();
 		mapManager = GetComponent<MapManager>();
 		enemyManager = GetComponent<EnemyManager>();
@@ -29,28 +28,13 @@ public class MrGunManager : MonoBehaviour {
 
 	void Start ()
 	{
-		
-	}
-
-	public void start()
-	{
-		foreach (GameObject g in GameObject.FindGameObjectsWithTag("stair"))
-		{
-			Destroy(g);
-		}
-		foreach (GameObject g in GameObject.FindGameObjectsWithTag("player"))
-		{
-			Destroy(g);
-		}
-//		foreach (GameObject g in GameObject.FindGameObjectsWithTag("line"))
-//		{
-//			Destroy(g);
-//		}
 		started = true;
 		Vector3 playerloc = mapManager.genrateMap(20);
 		playerManager.createPlayer(playerloc);
-
+		
 	}
+
+
 	
 	// Update is called once per frame
 	void Update()
@@ -61,7 +45,8 @@ public class MrGunManager : MonoBehaviour {
 			Debug.Log("started");
 			if (enemys == 0)
 			{
-				menuManager.showWinMenu();
+				SceneManager.LoadScene("win");
+
 				Debug.Log("I WIN I WIN");
 				started = false;
 			}
@@ -94,6 +79,7 @@ public class MrGunManager : MonoBehaviour {
 
 				}
 
+				
 				if (shooted && enemyManager.isEnemyDead())
 				{
 					enemys--;
@@ -104,7 +90,6 @@ public class MrGunManager : MonoBehaviour {
 				if (enemyManager.getStillPlaying() && !changing)
 				{
 					changing = true;
-//				playerManager.checkMovement();
 					enemyManager.checkMovment();
 					enemyMoving = true;
 				}
@@ -112,7 +97,8 @@ public class MrGunManager : MonoBehaviour {
 			else
 			{
 				started = false;
-				menuManager.showLoseMenu();
+				SceneManager.LoadScene("lose");
+
 				Debug.Log("YOU ARE FUCKING DEAD");
 			}
 

@@ -90,6 +90,10 @@ public class EnemyManager : MonoBehaviour {
 		return false;
 	}
 
+	public bool isShooting()
+	{
+		return _enemy.getIsShooting();
+	}
 	public void disableShooting()
 	{
 		_enemy.setIsShooting(false);
