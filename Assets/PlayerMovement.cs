@@ -58,82 +58,6 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update()
 	{
-//		if (shooting)
-//		{
-//			if (Input.GetKeyDown(KeyCode.Q))
-//			{
-//				GameObject bullet = Instantiate(bulletPrefab);
-//				bullet.transform.position = player.transform.position - new Vector3(0, (float) -0.5);
-//				bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(-300*(float) Math.Cos(line.GetComponent<RectTransform>().eulerAngles[2]*Math.PI/(180)),-300*(float) Math.Sin(line.GetComponent<RectTransform>().eulerAngles[2]*Math.PI/(180))));
-//			}
-//			degree += 1*Time.timeScale;
-//			degree = degree % 13;
-//			degree = degree  - 6;
-//			line.GetComponent<RectTransform>().RotateAround(new Vector3(0,0,1),0.01f);
-//
-//			
-//		}
-//		if (Input.GetKeyDown(KeyCode.W)  & shooting)
-//		{
-//			shooting = false;
-//			clickAble = false;
-//			Destroy(enemy1);
-//			if (pos == x1)
-//			{
-//				
-//				Destroy(ground.GetComponent<Collider2D>());
-//				player.GetComponent<SpriteRenderer>().sortingOrder += 1;
-//				pos = x2;
-//				sign = -1;
-//			}
-//			else
-//			{
-//				sign = 1;
-//				pos = x1;
-//				Destroy(ground.GetComponent<Collider2D>());
-//				player.GetComponent<SpriteRenderer>().sortingOrder += 1;
-//
-//			}
-//
-//		}
-//		if (Input.GetKeyDown(KeyCode.Space) && clickAble && !shooting)
-//		{
-//			shooting = true;
-//			clickAble = false;
-//			line.transform.position = player.transform.position - new Vector3((float)( sign* 1.5),(float)-0.5);
-//			enemy1 = Instantiate(enemy);
-//			int lastLayerId = sp.sortingOrder;
-//			enemy1.GetComponent<SpriteRenderer>().sortingOrder = lastLayerId + 2;
-//			enemy1.transform.position= GameObject.FindGameObjectsWithTag("stair2")[GameObject.FindGameObjectsWithTag("stair2").Length-lastLayerId-1].transform.position + new Vector3(0,(float)0.25);
-//			enemy1.transform.position -= new Vector3(9*sign,0);
-//			
-//			
-//			
-//		}
-//		
-//		
-//		double w = Math.Abs(player.transform.position.x - (pos)) ;
-//		if (w < 0.1 )
-//		{
-//			rb.velocity = new Vector2(0, 0);
-//			rb.position =  new Vector2((float)pos,rb.position.y);
-//			if (!shooting)
-//			{
-//				clickAble = true;
-//				
-//			}
-//
-//		}
-//		else
-//		{
-//			rb.position += new Vector2((float) ((float)sign * 0.05), 0) * Time.timeScale;
-//			clickAble = false;
-//
-//		}
-//		
-//		
-//	}
-		Debug.Log(GameObject.FindGameObjectsWithTag("enemy").Length);
 		if (GameObject.FindGameObjectsWithTag("enemy").Length == 0 && shooted)
 		{
 			shooted = false;
@@ -144,7 +68,11 @@ public class PlayerMovement : MonoBehaviour
 				pos = x2;
 				sign = -1;
 			}
-			else
+
+			if (pos == x2)
+			{
+				
+			}
 			{
 				sign = 1;
 				pos = x1;
@@ -200,7 +128,6 @@ public class PlayerMovement : MonoBehaviour
 				if (GameObject.FindGameObjectsWithTag("enemy").Length == 0)
 				{
 					enemy1 = Instantiate(enemy);
-
 					int lastLayerId = sp.sortingOrder;
 					enemy1.GetComponent<SpriteRenderer>().sortingOrder = lastLayerId + 2;
 					enemy1.transform.position =
@@ -239,8 +166,6 @@ public class PlayerMovement : MonoBehaviour
 
 
 			}
-			Debug.Log(line.transform.rotation);
-//			Debug.Log(degree);
 			if (sign == 1)
 			{
 				if (line.GetComponent<RectTransform>().eulerAngles[2] > 40 ||
@@ -258,7 +183,6 @@ public class PlayerMovement : MonoBehaviour
 				}
 			}
 
-//			degree = 1;
 			line.GetComponent<RectTransform>().RotateAround(new Vector3(0, 0, 1), (float)degree*0.01f*Time.timeScale);
 
 		}

@@ -10,7 +10,6 @@ public class CameraManager : MonoBehaviour
 // Use this for initialization
 	void Start ()
 	{
-//		cam = GameObject.FindGameObjectWithTag("MainCamera");
 		cam = GameObject.Find("Main Camera");
 		player = GameObject.Find("player(Clone)");
 	}
@@ -18,6 +17,10 @@ public class CameraManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (player == null)
+		{
+			player = GameObject.Find("player(Clone)");
+		}
 		cam.transform.position = new Vector3((float)-3.8,player.transform.position.y,-10); ;
 	}
 }
