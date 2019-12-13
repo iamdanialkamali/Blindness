@@ -216,18 +216,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Bullet.cs" />
-    <Compile Include="Assets\CameraManager.cs" />
-    <Compile Include="Assets\Enemy.cs" />
-    <Compile Include="Assets\EnemyManager.cs" />
-    <Compile Include="Assets\enemyMovement.cs" />
-    <Compile Include="Assets\fuckThisShit.cs" />
-    <Compile Include="Assets\GunManager.cs" />
-    <Compile Include="Assets\MapManager.cs" />
-    <Compile Include="Assets\MrGunManager.cs" />
-    <Compile Include="Assets\Player.cs" />
-    <Compile Include="Assets\PlayerManager.cs" />
-    <Compile Include="Assets\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\EnemyManager.cs" />
+    <Compile Include="Assets\Scripts\GameAudioManager.cs" />
+    <Compile Include="Assets\Scripts\GunManager.cs" />
+    <Compile Include="Assets\Scripts\MapManager.cs" />
+    <Compile Include="Assets\Scripts\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\MrGunManager.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>

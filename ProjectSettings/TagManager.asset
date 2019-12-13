@@ -11,6 +11,8 @@ TagManager:
   - line
   - bullet
   - enemyBullet
+  - map
+  - stair
   layers:
   - Default
   - TransparentFX
