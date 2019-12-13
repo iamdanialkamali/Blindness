@@ -8,13 +8,21 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	private Rigidbody2D enemyRigibody;
 	private Collider enemyCollider;
+	private GameObject ground;
+	private GameObject killedGround;
 	private bool isShooting = false;
-	private int life = 100;
+	private int life = 2000;
 	void Start ()
 	{
 		enemyRigibody = GetComponent<Rigidbody2D>();
 		enemyCollider = GetComponent<Collider>();
 	}
+
+	private void OnCollisionStay2D(Collision2D other)
+	{
+		ground = other.gameObject;
+	}
+
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("bullet"))
@@ -30,9 +38,11 @@ public class Enemy : MonoBehaviour {
         	life -= damage;
         	if (life <= 0)
         	{
-        		Destroy(gameObject,1.5f);
+        		Destroy(gameObject,1f);
 
         	}
+            Destroy(other.gameObject);
+
 //        	Destroy(other.);meObject    			
 		}
 
@@ -42,12 +52,37 @@ public class Enemy : MonoBehaviour {
 	{
 		isShooting = true;
 	}
-
+	
 	public bool getIsShooting()
 	{
 		return isShooting;
 	}
 
+	public void killGround()
+	{
+		Debug.Log("KILLLING HA HA HA HA");
+		killedGround = ground;
+//		Destroy(ground.GetComponent<Collider2D>());
+		ground.GetComponent<Collider2D>().enabled = false;
+
+	}
+	public void CreateGround()
+	{
+//		killedGround.AddComponent<Collider2D>
+		killedGround.GetComponent<Collider2D>().enabled = true;
+			
+	}
+
+	public void setKinematic()
+	{
+		enemyRigibody.bodyType = RigidbodyType2D.Kinematic;
+	}
+
+	public void setDynamic()
+	{
+		enemyRigibody.bodyType = RigidbodyType2D.Dynamic;
+		
+	}
 	// Update is called once per frame
 	void Update () {
 		

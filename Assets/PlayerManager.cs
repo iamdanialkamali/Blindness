@@ -66,6 +66,7 @@ public class PlayerManager : MonoBehaviour {
 			playerRigidbody.position = new Vector2((float) pos, playerRigidbody.position.y);
 			if (!shooting)
 			{
+				_player.killLastGround();
 				shooting = true;
 				showLine();
 			}
@@ -76,6 +77,7 @@ public class PlayerManager : MonoBehaviour {
 		{
 			shooting = false;
 			playerRigidbody.position += new Vector2((float) (sign * 0.05), 0) * Time.timeScale;
+			playerRigidbody.AddForce(new Vector2(0,-10));
 			return false;
 		}
 	}
@@ -158,19 +160,17 @@ public class PlayerManager : MonoBehaviour {
 	public void checkMovement()
 	{
 		if (pos == x1)
-			{
-				_player.killLastGround();
-				player.GetComponent<SpriteRenderer>().sortingOrder += 1;
-				pos = x2;
-				sign = -1;
-			}
-			else
-			{
-				_player.killLastGround();
-				sign = 1;
-				pos = x1;
-				player.GetComponent<SpriteRenderer>().sortingOrder += 1;
-			}
+		{
+			player.GetComponent<SpriteRenderer>().sortingOrder += 1;
+			pos = x2;
+			sign = -1;
+		}
+		else
+		{
+			sign = 1;
+			pos = x1;
+			player.GetComponent<SpriteRenderer>().sortingOrder += 1;
+		}
 		
 		
 	}

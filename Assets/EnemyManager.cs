@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
@@ -10,9 +12,19 @@ public class EnemyManager : MonoBehaviour {
 	private Enemy _enemy;
 	private static int health;
 	private GunManager gunManager;
+	private Rigidbody2D enemyRigidbody;
+	private Transform enemyTransform;
 	private GameObject player;
+	private bool stillPlaying;
+	private double pos ;
+	private double x1 ;
+	private double degree = 1;
+	private int sign;
+	private double x2 = 2;
 	void Start ()
 	{
+		pos = gameObject.transform.position.x;
+		x1 = pos;
 	}
 	
 	// Update is called once per frame
@@ -28,7 +40,8 @@ public class EnemyManager : MonoBehaviour {
 			enemy = Instantiate(enemyPrefab);
 			_enemy = enemy.GetComponent<Enemy>();
 			gunManager = enemy.GetComponent<GunManager>();
-
+			enemyRigidbody = enemy.GetComponent<Rigidbody2D>();
+			enemyTransform = enemy.GetComponent<Transform>();
 			int lastLayerId = player.GetComponent<SpriteRenderer>().sortingOrder;
 			enemy.GetComponent<SpriteRenderer>().sortingOrder = lastLayerId + 2;
 			enemy.transform.position =
@@ -39,6 +52,18 @@ public class EnemyManager : MonoBehaviour {
 		}
 	}
 
+	private void checkStillPlaying()
+	{
+		if (player != null && enemy != null && _enemy.getIsShooting())
+		{
+			stillPlaying = true;
+		} 
+	}
+
+	public bool getStillPlaying()
+	{
+		return stillPlaying;
+	}
 
 	public bool isEnemyDead()
 	{
@@ -57,8 +82,52 @@ public class EnemyManager : MonoBehaviour {
 		if (_enemy.getIsShooting()&&enemy!=null)
 		{
 			gunManager.shootToPLayer(player.transform,enemy.transform);
+			
 		}
+		yield return new WaitForSeconds(2);
+		checkStillPlaying();
 		
+	}
+
+	public void checkMovment()
+	{
+		_enemy.killGround();
+		_enemy.setDynamic();
+		if (pos == x1)
+		{
+			pos = x2;
+			sign = 1;
+		}
+		else
+		{
+			pos = x1;
+			sign = -1;
+		}
+	}
+	
+
+	public bool moveEnemy()
+	{
+		
+		double w = Math.Abs(enemyTransform.position.x - pos);
+		if (w >0.1)
+		{
+			enemyTransform.position += new Vector3((float) (sign * 0.05), 0) * Time.timeScale;
+			enemyRigidbody.AddForce(new Vector2(0, -10));
+			return false;
+		}
+		else
+		{
+			enemyTransform.position = new Vector3((float)pos, enemyTransform.position.y);
+			enemyRigidbody.velocity = new Vector2(0, 0);
+			_enemy.CreateGround();
+			_enemy.setKinematic();
+
+			return true;
+
+		}
+
+
 	}
 
 }

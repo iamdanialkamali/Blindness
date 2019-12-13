@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 	
 		// Use this for initialization
 	private Collider2D ground;
-	private int life = 100;
+	private int life = 200;
 	void Start () {
 		
 	}
@@ -31,9 +31,10 @@ public class Player : MonoBehaviour {
 			life -= damage;
 			if (life <= 0)
 			{
-				Destroy(gameObject,1.5f);
-				Destroy(other);
+				Destroy(gameObject,1f);
 			}
+			Destroy(other.gameObject);
+
 		}
 
 	}

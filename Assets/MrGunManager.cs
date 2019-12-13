@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
 
 public class MrGunManager : MonoBehaviour {
@@ -9,8 +10,11 @@ public class MrGunManager : MonoBehaviour {
 	private MapManager mapManager;
 	private PlayerManager playerManager;
 	private EnemyManager enemyManager;
+	private bool changing;
 	private bool shooting;
 	private bool shooted;
+	private bool enemyArrived;
+	private bool enemyMoving;
 
 	private void Awake()
 	{
@@ -46,10 +50,28 @@ public class MrGunManager : MonoBehaviour {
 				shooting = false;
 			}
 
+			if (!enemyManager.isEnemyDead() && enemyMoving)
+			{
+				enemyArrived = enemyManager.moveEnemy();
+				if (enemyArrived)
+				{
+					playerManager.checkMovement();
+					enemyMoving = false;
+					shooted = false;
+				}
+
+			}
 			if (shooted && enemyManager.isEnemyDead())
 			{
 				shooted = false;
 				playerManager.checkMovement();
+			}
+			if(enemyManager.getStillPlaying() && !changing )
+			{
+				changing = true;
+//				playerManager.checkMovement();
+				enemyManager.checkMovment();
+				enemyMoving = true;
 			}
 		}
 		else
