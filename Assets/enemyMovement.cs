@@ -10,7 +10,6 @@ public class enemyMovement : MonoBehaviour {
 	void Start ()
 	{
 		enemy = GameObject.FindWithTag("enemy");
-
 //		GameObject player = GameObject.FindGameObjectWithTag("player");
 //		int lastLayerId = player.GetComponent<SpriteRenderer>().sortingOrder;
 //		Debug.Log(GameObject.FindGameObjectsWithTag("stair2").Length);
@@ -25,8 +24,17 @@ public class enemyMovement : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-
-				Destroy(enemy);	
+		if (other.gameObject.tag == "bullet")
+		{
+			enemy.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+			enemy.GetComponent<Rigidbody2D>().AddTorque(200);
+			Vector2 a = other.gameObject.GetComponent<Rigidbody2D>().velocity;
+			enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(100*Math.Sign(a[0]),300));
+			Destroy(enemy.GetComponent<BoxCollider2D>());
+			Debug.Log("KIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIR");
+			Debug.Log(enemy.name);
+			Destroy(enemy,1);
+		}
 
 	}
 

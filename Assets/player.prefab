@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1016318827670754, guid: bfb52e0ecf242044080f321f097dde18, type: 2}
+  enemyBullet: {fileID: 1447897564501586, guid: 33ca82288e739f24e864849874dfc1f0,
+    type: 2}
   clickAble: 0
   bulletPrefab: {fileID: 1687086166938196, guid: d5b1619690a221643a02d468b163f1fb,
     type: 2}
