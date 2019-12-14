@@ -1,7 +1,13 @@
 sceneSetups:
-- path: Assets/game.unity
+- path: Assets/FirstPage.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/Menu/Scenes/SampleScene.unity
+- path: Assets/game.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/win.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/lose.unity
   isLoaded: 0
   isActive: 0

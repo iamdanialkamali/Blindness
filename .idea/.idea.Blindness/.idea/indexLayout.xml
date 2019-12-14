@@ -10,7 +10,9 @@
       <Path>.git</Path>
       <Path>.idea</Path>
       <Path>Library</Path>
+      <Path>Temp</Path>
       <Path>UnityPackageManager</Path>
+      <Path>blindness_Data</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>
