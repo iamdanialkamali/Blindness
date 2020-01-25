@@ -16,16 +16,17 @@ public class PlayerManager : MonoBehaviour {
 	private GameObject player;
 	private Player _player;
 	private GameObject line;
-	private double pos = 3;
 	private double x1 = 3;
+	private double pos;
 	private double degree = 1;
 	private double x2 = -10.5;
 	private GameObject ground;
 	private int sign = 1;
 	private bool shooting = true;
 	void Start ()
-{
-}
+	{
+		pos = x1;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -37,7 +38,7 @@ public class PlayerManager : MonoBehaviour {
 	{
 		
 		player = Instantiate(playerPrefab);
-		player.transform.position = loc- new Vector3(10,1);
+		player.transform.position = loc - new Vector3(10,1);
 		line = Instantiate(linePrefab);
 		line.GetComponentInChildren<SpriteRenderer>().sortingOrder = -10;
 		lineTransform = line.GetComponent<Transform>();

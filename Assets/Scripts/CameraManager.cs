@@ -18,6 +18,7 @@ public class CameraManager : MonoBehaviour
 	{
 		cam = GameObject.Find("Main Camera");
 		player = GameObject.Find("player(Clone)");
+		Debug.Log(gameObject.name);
 		cam.transform.position = new Vector3(cameraConfig.constantX,player.transform.position.y,cameraConfig.z); ;
 	}
 }
