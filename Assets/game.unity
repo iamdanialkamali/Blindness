@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -497,6 +497,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 1066492153979278, guid: aae446aceac1f9d409eab5dc2308694c,
     type: 3}
   linePrefab: {fileID: 1949354060438340, guid: 3e6e38338f3d6bc42a23f996b3b57b5b, type: 3}
+  playerConfig: {fileID: 11400000, guid: 6be413d209392324b9ed87b932eb89c0, type: 2}
 --- !u!82 &489097563 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 82831995806563296, guid: 53a40f12b4a98204ba7a0596f2fbdb08,
