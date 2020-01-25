@@ -69,11 +69,17 @@
     <Compile Include="Assets\Scripts\GunManager.cs" />
     <Compile Include="Assets\Scripts\MapManager.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\Model\EnemyModel.cs" />
+    <Compile Include="Assets\Scripts\Model\GameModel.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\MrGunManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Presenter\EnemyPresenter.cs" />
+    <Compile Include="Assets\Scripts\Presenter\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Presenter\PlayerPresenter.cs" />
+    <Compile Include="Assets\Scripts\Presenter\ServiceLocator.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/GameClass/Blindness/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
