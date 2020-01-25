@@ -75,7 +75,7 @@ Destroy(other.gameObject);
 
 	public void killGround()
 	{
-		Debug.Log("KILLLING HA HA HA HA");
+//		Debug.Log("KILLLING HA HA HA HA");
 		killedGround = ground;
 //		Destroy(ground.GetComponent<Collider2D>());
 		ground.GetComponent<Collider2D>().enabled = false;

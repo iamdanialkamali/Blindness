@@ -11,14 +11,14 @@ public class GameManager : MonoBehaviour
 //    private PlayerManager playerPresenter;
     private PlayerPresenter playerPresenter;
     private PlayerModel playerModel = new PlayerModel();
-    private EnemyManager enemyManager;
+    private EnemyPresenter enemyPresenter;
     private GameModel gameModel = new GameModel();
-
+    
     private void Awake()
     {
         playerPresenter = GetComponent<PlayerPresenter>();
         mapManager = GetComponent<MapManager>();
-        enemyManager = GetComponent<EnemyManager>();
+        enemyPresenter = GetComponent<EnemyPresenter>();
         playerPresenter.Setup(playerModel);
     }
 
@@ -33,15 +33,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(gameModel.getEnemyCount());
+//        Debug.Log(gameModel.getEnemyCount());
         if (gameModel.getStarted())
         {
-            Debug.Log("started");
+//            Debug.Log("started");
             if (gameModel.getEnemyCount() == 0)
             {
                 SceneManager.LoadScene("win");
 
-                Debug.Log("I WIN I WIN");
+//                Debug.Log("I WIN I WIN");
                 gameModel.SetStarted(false);
             }
             else if (playerPresenter.isAlive())
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
                 bool arrived = playerPresenter.movePlayer();
                 if (arrived && !gameModel.getShooted())
                 {
-                    enemyManager.createEnemy(playerPresenter.getSign(), playerPresenter.getPlayer(), gameModel.getEnemyCount());
+                    enemyManager.createEnemy(playerModel.GetSign(), playerPresenter.getPlayer(), gameModel.getEnemyCount());
                     gameModel.SetIsShooting(true);
                 }
 
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
             {
                 gameModel.SetStarted(false);
                 SceneManager.LoadScene("lose");
-                Debug.Log("YOU ARE FUCKING DEAD");
+//                Debug.Log("YOU ARE FUCKING DEAD");
             }
 
         }

@@ -17,26 +17,20 @@ public class PlayerPresenter : MonoBehaviour {
 	private Player _player;
 	private GameObject line;
 	private PlayerModel playerModel;
-	private double x1 = 3;
-	private double pos;
-	private double degree = 1;
-	private double x2 = -10.5;
 	private GameObject ground;
-	private int sign = 1;
-	private bool shooting = true;
-
+	public PlayerConfig playerConfig;
 	public void Setup(PlayerModel model)
 	{
 		playerModel = model;
+		playerModel.setConfig(playerConfig);
 	}
 	void Start ()
 	{
-		pos = x1;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+//		Debug.Log("WTTTTTTTTTTTTTTG" + playerModel.playerConfig.xLeft);
 	}
 	
 
@@ -54,7 +48,7 @@ public class PlayerPresenter : MonoBehaviour {
 		_player = player.GetComponent<Player>();
 		playerRigidbody.freezeRotation = true;
 		gunManager = player.GetComponent<GunManager>();
-
+		_player.setup(playerModel.getMaxLife(), playerModel.getDeadTorque(), playerModel.getDeadUpForce());
 	}
 
 	public GameObject getPlayer()
@@ -65,18 +59,17 @@ public class PlayerPresenter : MonoBehaviour {
 	public bool movePlayer()
 	{
 		
-		double w = Math.Abs(player.transform.position.x - (pos));
+		double w = Math.Abs(player.transform.position.x - (playerModel.getPos()));
 		if (w < 0.1)
 		{
 			playerRigidbody.velocity = new Vector2(0, 0);
-			playerRigidbody.position = new Vector2((float) pos, playerRigidbody.position.y);
-			if (!shooting)
+			playerRigidbody.position = new Vector2(playerModel.getPos(), playerRigidbody.position.y);
+			if (!playerModel.GetShooting())
 			{
 				_player.killLastGround();
-				shooting = true;
+				playerModel.SetShooting(true);
 				showLine();
 			}
-
 			flipPlayer();
 			rotateLine();
 			
@@ -84,8 +77,8 @@ public class PlayerPresenter : MonoBehaviour {
 		}
 		else
 		{
-			shooting = false;
-			playerRigidbody.position += new Vector2((float) (sign * 0.05), 0) * Time.timeScale;
+			playerModel.SetShooting(false);
+			playerRigidbody.position += new Vector2((float) (playerModel.GetSign() * 0.05), 0) * Time.timeScale;
 			playerRigidbody.AddForce(new Vector2(0,-10));
 			return false;
 		}
@@ -93,7 +86,7 @@ public class PlayerPresenter : MonoBehaviour {
 
 	private void flipPlayer()
 	{
-		if (sign == 1)
+		if (playerModel.GetSign() == 1)
 		{
 			playerSpriteRenderer.flipX = true ;
 			
@@ -115,7 +108,7 @@ public class PlayerPresenter : MonoBehaviour {
 		}
 
 		line.GetComponent<SpriteRenderer>().enabled = true;
-		if (sign == -1)
+		if (playerModel.GetSign() == -1)
 		{
 			line.transform.rotation = new Quaternion(0, 0, 1, 0);
 		}
@@ -140,12 +133,12 @@ public class PlayerPresenter : MonoBehaviour {
 	}
 	public void rotateLine()
 	{
-		if (sign == 1)
+		if (playerModel.GetSign() == 1)
 		{
 			if (line.GetComponent<RectTransform>().eulerAngles[2] > 40 ||
 			    line.GetComponent<RectTransform>().eulerAngles[2] < -40)
 			{
-				degree = -degree;
+				playerModel.SetDegree(-1 * playerModel.getDegree());
 			}
 		}
 		else
@@ -153,17 +146,12 @@ public class PlayerPresenter : MonoBehaviour {
 			if (line.GetComponent<RectTransform>().eulerAngles[2] > 220 ||
 			    line.GetComponent<RectTransform>().eulerAngles[2] < 120)
 			{
-				degree = -degree;
+				playerModel.SetDegree(-1 * playerModel.getDegree());
 			}
 		}
 
-		line.GetComponent<RectTransform>().RotateAround(new Vector3(0, 0, 1), (float)degree*0.01f*Time.timeScale);
+		line.GetComponent<RectTransform>().RotateAround(new Vector3(0, 0, 1), (playerModel.getDegree() * 0.01f*Time.timeScale));
 
-	}
-
-	public int  getSign()
-	{
-		return sign;
 	}
 
 	public int getPlayerSortingOrder()
@@ -181,16 +169,16 @@ public class PlayerPresenter : MonoBehaviour {
 
 	public void checkMovement()
 	{
-		if (pos == x1)
+		if (playerModel.getPos() == playerModel.getX1())
 		{
 			player.GetComponent<SpriteRenderer>().sortingOrder += 1;
-			pos = x2;
-			sign = -1;
+			playerModel.setPos(playerModel.getX2());
+			playerModel.SetSign(-1);
 		}
 		else
 		{
-			sign = 1;
-			pos = x1;
+			playerModel.SetSign(1);
+			playerModel.setPos(playerModel.getX1());
 			player.GetComponent<SpriteRenderer>().sortingOrder += 1;
 		}
 		
