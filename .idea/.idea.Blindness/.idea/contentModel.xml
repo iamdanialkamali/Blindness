@@ -22,7 +22,11 @@
           <e p="MapManager.cs" t="Include" />
           <e p="MenuManager.cs" t="Include" />
           <e p="Model" t="Include">
+            <e p="Ad.cs" t="Include" />
+            <e p="BasicEventManager.cs" t="Include" />
             <e p="EnemyModel.cs" t="Include" />
+            <e p="EventListener.cs" t="Include" />
+            <e p="GameEvent.cs" t="Include" />
             <e p="GameModel.cs" t="Include" />
             <e p="PlayerModel.cs" t="Include" />
           </e>
@@ -32,7 +36,9 @@
           <e p="PlayerMovement.cs" t="Include" />
           <e p="Presenter" t="Include">
             <e p="EnemyPresenter.cs" t="Include" />
+            <e p="EventManager.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
+            <e p="GoogleAd.cs" t="Include" />
             <e p="PlayerPresenter.cs" t="Include" />
             <e p="ServiceLocator.cs" t="Include" />
           </e>
