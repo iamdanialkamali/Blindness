@@ -2,12 +2,16 @@ sceneSetups:
 - path: Assets/FirstPage.unity
   isLoaded: 1
   isActive: 1
+  isSubScene: 0
 - path: Assets/game.unity
   isLoaded: 0
   isActive: 0
+  isSubScene: 0
 - path: Assets/win.unity
   isLoaded: 0
   isActive: 0
+  isSubScene: 0
 - path: Assets/lose.unity
   isLoaded: 0
   isActive: 0
+  isSubScene: 0

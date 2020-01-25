@@ -6,6 +6,7 @@ public class CameraManager : MonoBehaviour
 {
 	private GameObject cam ;
 	private GameObject player;
+	public CameraConfig cameraConfig;
 	
 // Use this for initialization
 	void Start ()
@@ -17,6 +18,6 @@ public class CameraManager : MonoBehaviour
 	{
 		cam = GameObject.Find("Main Camera");
 		player = GameObject.Find("player(Clone)");
-		cam.transform.position = new Vector3((float)-3.8,player.transform.position.y,-10); ;
+		cam.transform.position = new Vector3(cameraConfig.constantX,player.transform.position.y,cameraConfig.z); ;
 	}
 }

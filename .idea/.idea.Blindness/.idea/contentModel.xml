@@ -5,20 +5,27 @@
     <e p="C:\Users\iamdanialkamali\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Blindness.-1076279750.00" t="ExcludeRecursive" />
     <e p="D:\GameClass\Blindness" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
-      <e p="Assets\Scripts" t="Include">
-        <e p="Bullet.cs" t="Include" />
-        <e p="ButtonHandler.cs" t="Include" />
-        <e p="CameraManager.cs" t="Include" />
-        <e p="enemy.cs" t="Include" />
-        <e p="EnemyManager.cs" t="Include" />
-        <e p="GameAudioManager.cs" t="Include" />
-        <e p="GunManager.cs" t="Include" />
-        <e p="MapManager.cs" t="Include" />
-        <e p="MenuManager.cs" t="Include" />
-        <e p="MrGunManager.cs" t="Include" />
-        <e p="player.cs" t="Include" />
-        <e p="PlayerManager.cs" t="Include" />
-        <e p="PlayerMovement.cs" t="Include" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Bullet.cs" t="Include" />
+          <e p="ButtonHandler.cs" t="Include" />
+          <e p="CameraManager.cs" t="Include" />
+          <e p="Configs" t="Include">
+            <e p="CameraConfig.cs" t="Include" />
+            <e p="EnemyConfig.cs" t="Include" />
+            <e p="PlayerConfig.cs" t="Include" />
+          </e>
+          <e p="enemy.cs" t="Include" />
+          <e p="EnemyManager.cs" t="Include" />
+          <e p="GameAudioManager.cs" t="Include" />
+          <e p="GunManager.cs" t="Include" />
+          <e p="MapManager.cs" t="Include" />
+          <e p="MenuManager.cs" t="Include" />
+          <e p="MrGunManager.cs" t="Include" />
+          <e p="player.cs" t="Include" />
+          <e p="PlayerManager.cs" t="Include" />
+          <e p="PlayerMovement.cs" t="Include" />
+        </e>
       </e>
       <e p="Blindness.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
