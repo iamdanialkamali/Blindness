@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,20 +10,18 @@ public class GameManager : MonoBehaviour
     private MapManager mapManager;
     private PlayerPresenter playerPresenter;
     private PlayerModel playerModel = new PlayerModel();
+    private EnemyModel enemyModel = new EnemyModel();
     private EnemyPresenter enemyPresenter;
     private GameModel gameModel = new GameModel();
     
-//    public void OnEvent(GameEvent gameEvent)
-//    {
-//        data.point += gameEvent.number;
-//
-//    }
+
     private void Awake()
     {
         playerPresenter = GetComponent<PlayerPresenter>();
         mapManager = GetComponent<MapManager>();
         enemyPresenter = GetComponent<EnemyPresenter>();
         playerPresenter.Setup(playerModel);
+        enemyPresenter.Setup(enemyModel);
     }
 
     void Start ()
@@ -31,9 +30,8 @@ public class GameManager : MonoBehaviour
         int level = playerModel.GetLevel();
         gameModel.SetStarted( true);
         gameModel.setEnemyCount(playerModel.GetLevel());
-        Vector3 playerloc = mapManager.genrateMap((level*2)+5);
+        Vector3 playerloc = mapManager.genrateMap((int) level+6);
         playerPresenter.createPlayer(playerloc);
-		
     }
     
     // Update is called once per frame
@@ -56,21 +54,22 @@ public class GameManager : MonoBehaviour
                 bool arrived = playerPresenter.movePlayer();
                 if (arrived && !gameModel.getShooted())
                 {
-                    enemyManager.createEnemy(playerModel.GetSign(), playerPresenter.getPlayer(), gameModel.getEnemyCount());
+                    enemyPresenter.createEnemy(playerModel.GetSign(), playerPresenter.getPlayer(), gameModel.getEnemyCount());
                     gameModel.SetIsShooting(true);
                 }
 
                 if (gameModel.IsShooting() && Input.GetKeyDown(KeyCode.Space))
                 {
                     playerPresenter.shoot();
-                    StartCoroutine(enemyManager.shoot());
+                    StartCoroutine(enemyPresenter.shoot());
                     gameModel.setShooted(true);
                     gameModel.SetIsShooting(false);
                 }
-
-                if (!enemyManager.isEnemyDead() && gameModel.getEnemyMoving())
+                Debug.Log("Enemy Presenter"+enemyPresenter.isEnemyDead().ToString());
+                Debug.Log("Enemy Model"+gameModel.getEnemyMoving().ToString());
+                if (!enemyPresenter.isEnemyDead() && gameModel.getEnemyMoving())
                 {
-                    gameModel.setEnemyArrived(enemyManager.moveEnemy());
+                    gameModel.setEnemyArrived(enemyPresenter.moveEnemy());
                     if (gameModel.getEnemyArrived())
                     {
                         playerPresenter.checkMovement();
@@ -81,7 +80,7 @@ public class GameManager : MonoBehaviour
                 }
 
 				
-                if (gameModel.getShooted() && enemyManager.isEnemyDead())
+                if (gameModel.getShooted() && enemyPresenter.isEnemyDead())
                 {
                     
                     gameModel.setEnemyCount(gameModel.getEnemyCount() -1 );
@@ -89,10 +88,10 @@ public class GameManager : MonoBehaviour
                     playerPresenter.checkMovement();
                 }
 
-                if (enemyManager.getStillPlaying() && !gameModel.getChanging())
+                if (enemyPresenter.getStillPlaying() && !gameModel.getChanging())
                 {
                     gameModel.setChanging(true);
-                    enemyManager.checkMovment();
+                    enemyPresenter.checkMovment();
                     gameModel.setEnemyMoving(true);
                 }
             }

@@ -17,9 +17,7 @@ public class ServiceLocator : MonoBehaviour
             Instance = instance;
         else
             Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
-
+        
         SetupInterfaces();
     }
 

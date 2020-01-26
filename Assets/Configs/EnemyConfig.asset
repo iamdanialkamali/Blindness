@@ -16,6 +16,8 @@ MonoBehaviour:
   xRight: 0.2427
   maxLife: 100
   normalEnemyLife: 100
-  bossEnemyLife: 300
+  bossEnemyLife: 200
   deadTorque: 200
   deadUpForce: 300
+  enemyPrefab: {fileID: 1016318827670754, guid: bfb52e0ecf242044080f321f097dde18,
+    type: 3}

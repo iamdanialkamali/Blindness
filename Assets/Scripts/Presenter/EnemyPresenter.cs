@@ -4,24 +4,24 @@ using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
 using UnityEngine;
 
-public class EnemyPresenter : MonoBehaviour {
+public class EnemyPresenter : MonoBehaviour
+{
 
-	// Use this for initialization
-	public GameObject enemyPrefab;
+	private EnemyModel enemyModel;
+	public EnemyConfig enemyConfig;
 	private GameObject enemy;
 	private Enemy _enemy;
 	private GunManager gunManager;
 	private Rigidbody2D enemyRigidbody;
 	private Transform enemyTransform;
-	private GameObject player;
-	private bool stillPlaying;
-	private double pos ;
-	private double x1 = -8.0951;
-	private int sign;
-	private bool flip;
-	private double x2 = 0.2427;
 	void Start ()
 	{
+	}
+
+	public void Setup(EnemyModel model)
+	{
+		enemyModel = model;
+		enemyModel.setConfig(enemyConfig);
 	}
 	
 	// Update is called once per frame
@@ -36,30 +36,31 @@ public class EnemyPresenter : MonoBehaviour {
 	public void createEnemy(int playerSign,GameObject gamePlayer,int enemyCount)
 	{
 		if (GameObject.FindGameObjectsWithTag("enemy").Length == 0)
-		{
-			player = gamePlayer;
-			enemy = Instantiate(enemyPrefab);
+		{	
+			enemyModel.setPlayer(gamePlayer);
+			enemy = Instantiate(enemyModel.GetEnemyPrefab());
+
 			_enemy = enemy.GetComponent<Enemy>();
 			if (enemyCount == 1)
 			{
 				_enemy.setLife(200);
 			}
-
-			sign = playerSign;
+			
+			enemyModel.setSign(playerSign);
 			gunManager = enemy.GetComponent<GunManager>();
 			enemyRigidbody = enemy.GetComponent<Rigidbody2D>();
 			enemyTransform = enemy.GetComponent<Transform>();
-			int lastLayerId = player.GetComponent<SpriteRenderer>().sortingOrder;
+			int lastLayerId = enemyModel.getPlayer().GetComponent<SpriteRenderer>().sortingOrder;
 			enemy.GetComponent<SpriteRenderer>().sortingOrder = lastLayerId + 2;
 			enemyRigidbody.freezeRotation = true;
 			enemy.transform.position =
 				GameObject.FindGameObjectsWithTag("stair2")[
 					GameObject.FindGameObjectsWithTag("stair2").Length - lastLayerId - 1].transform.position +
 				new Vector3(0, (float) 0.25);
-			enemy.transform.position -= new Vector3(9 * sign, 0);
+			enemy.transform.position -= new Vector3(9 * enemyModel.getSign(), 0);
 			if (enemyTransform.position.x > -4)
 			{
-				flip = true;
+				enemyModel.setFlip(true);
 				flipEnemey();
 			}
 		}
@@ -67,15 +68,15 @@ public class EnemyPresenter : MonoBehaviour {
 
 	private void checkStillPlaying()
 	{
-		if (player != null && enemy != null && _enemy.getIsShooting())
+		if (enemyModel.getPlayer() != null && enemy != null && _enemy.getIsShooting())
 		{
-			stillPlaying = true;
+			enemyModel.setStillPlaying(true);
 		} 
 	}
 
 	public bool getStillPlaying()
 	{
-		return stillPlaying;
+		return enemyModel.getStillPlaying();
 	}
 
 	public bool isEnemyDead()
@@ -101,9 +102,9 @@ public class EnemyPresenter : MonoBehaviour {
 		_enemy.setIsShooting(true);
 		yield return new WaitForSeconds(3);
 		
-		if (_enemy.getIsShooting()&&enemy!=null && !isHited())
+		if (_enemy.getIsShooting() && enemy != null && !isHited())
 		{
-			gunManager.shootToPLayer(player.transform,enemy.transform);
+			gunManager.shootToPLayer(enemyModel.getPlayer().transform,enemy.transform);
 			
 		}
 		yield return new WaitForSeconds(2);
@@ -115,21 +116,22 @@ public class EnemyPresenter : MonoBehaviour {
 	{
 		_enemy.killGround();
 		_enemy.setDynamic();
-		if (Math.Abs(enemyTransform.position.x - x1) < 0.9)
+		if (Math.Abs(enemyTransform.position.x - enemyModel.getX1()) < 0.9)
 		{
-			pos = x2;
-			sign = 1;
+			enemyModel.setPos(enemyModel.getX2());
+			enemyModel.setSign(1);
 		}
 		else
 		{
-			pos = x1;
-			sign = -1;
+			enemyModel.setPos(enemyModel.getX1());
+
+			enemyModel.setSign(-1);
+
 		}
 	}
 	private void flipEnemey()
 	{ 
-//		Debug.Log(flip);
-		enemy.GetComponent<SpriteRenderer>().flipX = flip ;
+		enemy.GetComponent<SpriteRenderer>().flipX = enemyModel.getFlip()  ;
 
 	}
 	
@@ -137,20 +139,20 @@ public class EnemyPresenter : MonoBehaviour {
 	public bool moveEnemy()
 	{
 		_enemy.clearHited();
-		double w = Math.Abs(enemyTransform.position.x - pos);
+		double w = Math.Abs(enemyTransform.position.x - enemyModel.getPos());
 		if (w >0.1)
 		{
-			enemyTransform.position += new Vector3((float) (sign * 0.05), 0) * Time.timeScale;
+			enemyTransform.position += new Vector3((float) ( enemyModel.getSign() * 0.05), 0) * Time.timeScale;
 			enemyRigidbody.AddForce(new Vector2(0, -10));
 			return false;
 		}
 		else
 		{
-			enemyTransform.position = new Vector3((float)pos, enemyTransform.position.y);
+			enemyTransform.position = new Vector3((float)enemyModel.getPos() , enemyTransform.position.y);
 			enemyRigidbody.velocity = new Vector2(0, 0);
 			_enemy.CreateGround();
 			_enemy.setKinematic();
-			flip = !flip;
+			enemyModel.setFlip(!enemyModel.getFlip());
 			flipEnemey();
 			return true;
 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CameraConfig
   m_EditorClassIdentifier: 
   constantX: -3.8
-  z: -10
+  z: -8

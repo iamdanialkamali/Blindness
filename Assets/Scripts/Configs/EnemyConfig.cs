@@ -17,4 +17,6 @@ public class EnemyConfig : ScriptableObject
     public float bossEnemyLife = (float) 300;
     public float deadTorque = (float) 200;
     public float deadUpForce = (float) 300;
+    public GameObject enemyPrefab = null;
+
 }

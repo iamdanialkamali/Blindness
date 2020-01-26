@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class PlayerModel : MonoBehaviour
 {
+
     [System.Serializable]
     public class PlayerData
     {
         public bool shooting = true;
         public int sign = 1;
-        public float degree = 1;
+        public double degree = 1;
         public float x1;
         public float pos;
         public float x2;
@@ -18,6 +19,7 @@ public class PlayerModel : MonoBehaviour
         public float deadTorque;
         public float deadUpForce;
         public int level = 1;
+        public int points;
     }
 
     private PlayerData data = new PlayerData();
@@ -91,6 +93,7 @@ public class PlayerModel : MonoBehaviour
     {
         return data.pos;
     }
+
     public void setPos(float pos)
     {
         data.pos = pos;
@@ -100,6 +103,7 @@ public class PlayerModel : MonoBehaviour
     {
         return data.level;
     }
+
     public void SetLevel(int level)
     {
         data.level = level;
@@ -110,13 +114,32 @@ public class PlayerModel : MonoBehaviour
         if (PlayerPrefs.HasKey("PlayerData"))
         {
             string loadString = PlayerPrefs.GetString("PlayerData");
-            data = JsonUtility.FromJson<PlayerData>(loadString);
+            PlayerData model =  JsonUtility.FromJson<PlayerData>(loadString);
+            data.level = model.level;
+            data.points = model.points;
         }
     }
+
     public void SaveData()
     {
         string jsonString = JsonUtility.ToJson(data);
         PlayerPrefs.SetString("PlayerData", jsonString);
     }
+
+    public int GetPoint()
+    {
+        return data.points;
+    }
+
+    public void SetPoint(int pnt)
+    {
+        data.points = pnt;
+    }
     
+    public void AddPoint(int pnt)
+    {
+        data.points += pnt;
+    }
+
+
 }

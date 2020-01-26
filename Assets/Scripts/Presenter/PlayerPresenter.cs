@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPresenter : MonoBehaviour {
+public class PlayerPresenter : MonoBehaviour,EventListener {
 
 	// Use this for initialization
 	public GameObject playerPrefab;
@@ -19,6 +19,16 @@ public class PlayerPresenter : MonoBehaviour {
 	private PlayerModel playerModel;
 	private GameObject ground;
 	public PlayerConfig playerConfig;
+	
+	public void OnEvent(GameEvent gameEvent)
+	{
+		if (gameEvent.GetType() == typeof(PointEvent))
+		{
+			playerModel.AddPoint(gameEvent.number);
+			
+		}
+
+	}
 	public void Setup(PlayerModel model)
 	{
 		playerModel = model;
@@ -26,8 +36,10 @@ public class PlayerPresenter : MonoBehaviour {
 	}
 	void Start ()
 	{
+		ServiceLocator.Instance.eventManager.Register(this);
 	}
 	
+
 	// Update is called once per frame
 	void Update () {
 //		Debug.Log("WTTTTTTTTTTTTTTG" + playerModel.playerConfig.xLeft);
@@ -150,7 +162,7 @@ public class PlayerPresenter : MonoBehaviour {
 			}
 		}
 
-		line.GetComponent<RectTransform>().RotateAround(new Vector3(0, 0, 1), (playerModel.getDegree() * 0.01f*Time.timeScale));
+		line.GetComponent<RectTransform>().RotateAround(new Vector3(0, 0, 1), ((float)playerModel.getDegree() * 0.01f*Time.timeScale));
 
 	}
 

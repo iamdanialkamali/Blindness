@@ -35,10 +35,17 @@
           <e p="PlayerManager.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="Presenter" t="Include">
+            <e p="BulletPresenter.cs" t="Include" />
+            <e p="ButtonPresenter.cs" t="Include" />
             <e p="EnemyPresenter.cs" t="Include" />
             <e p="EventManager.cs" t="Include" />
+            <e p="GameAudioPresenter.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="GoogleAd.cs" t="Include" />
+            <e p="GunPresenter.cs" t="Include" />
+            <e p="MapPresenter.cs" t="Include" />
+            <e p="MenuPresenter.cs" t="Include" />
+            <e p="player.cs" t="Include" />
             <e p="PlayerPresenter.cs" t="Include" />
             <e p="ServiceLocator.cs" t="Include" />
           </e>

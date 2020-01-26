@@ -18,11 +18,56 @@ public class EnemyModel : MonoBehaviour
         public float normalEnemyLife;
         public float bossEnemyLife;
         public float deadTorque;
-        public float deadUpForce;        
+        public float deadUpForce;
+        public GameObject enemyPrefab;
+        public GameObject player;
+        public GameObject enemy;
+        
+    }
+    
+    private EnemyData data = new EnemyData();
+    
+    public void setConfig(EnemyConfig config)
+    {
+        data.x1 = config.xLeft;
+        data.x2 = config.xRight;
+        data.maxLife = config.maxLife;
+        data.normalEnemyLife = config.normalEnemyLife;
+        data.bossEnemyLife = config.bossEnemyLife;
+        data.deadTorque = config.deadTorque;
+        data.deadUpForce = config.deadUpForce;
+        data.pos = config.xRight;
+        data.enemyPrefab = config.enemyPrefab;
     }
 
-    private EnemyData data = new EnemyData();
+    public void setEnemy(GameObject enemy)
+    {
+        data.enemy = enemy;
 
+    }
+    
+    public GameObject getEnemy()
+    {
+        return data.enemy;
+
+    }
+    public void setPlayer(GameObject player)
+    {
+        data.player = player;
+    }
+    
+    public GameObject getPlayer()
+    {
+        return data.player;
+    }
+    public void SetEnemyPrefab(GameObject prefab)
+    {
+        data.enemyPrefab = prefab;
+    }
+    public GameObject GetEnemyPrefab()
+    {
+        return data.enemyPrefab;
+    }
     public void setStillPlaying(bool stillPlaying)
     {
         data.stillPlaying = stillPlaying;
@@ -56,6 +101,11 @@ public class EnemyModel : MonoBehaviour
     public void setFlip(bool flip)
     {
         data.flip = flip;
+    }
+    
+    public bool getFlip()
+    {
+        return data.flip;
     }
 
     public float getX1()
