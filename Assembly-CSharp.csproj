@@ -93,6 +93,38 @@
     <Compile Include="Assets\Scripts\Presenter\Player.cs" />
     <Compile Include="Assets\Scripts\Presenter\PlayerPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\ServiceLocator.cs" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMP_SDF-Mobile Masking Fixed.shader" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMP_SDF-Surface-Mobile Fixed.shader" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMP_SDF Overlay Fixed.shader" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMP_SDF Fixed.shader" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMP_SDF-Mobile Fixed.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\RTLTMPro\Ranges\NumberRanges.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMP_SDF-Mobile Overlay Fixed.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\RTLTMPro\Ranges\LetterRanges.txt" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMP_SDF-Surface Fixed.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\RTLTMPro\Resources\Shaders\TMPro_SurfaceOutline.cginc" />
+    <None Include="Assets\RTLTMPro\Ranges\TashkilRanges.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/GameClass/Blindness/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -681,6 +713,16 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="RTLTMPro-Editor.csproj">
+      <Project>{26D2AE6D-2042-A9EA-6745-3BE22FF4659A}</Project>
+      <Name>RTLTMPro-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="RTLTMPro.csproj">
+      <Project>{1A97DF98-10FA-242C-ED01-B273771D0DB4}</Project>
+      <Name>RTLTMPro</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
