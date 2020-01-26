@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private MapManager mapManager;
     private PlayerPresenter playerPresenter;
     private PlayerModel playerModel = new PlayerModel();
-    private EnemyManager enemyManager;
+    private EnemyPresenter enemyPresenter;
     private GameModel gameModel = new GameModel();
     
 //    public void OnEvent(GameEvent gameEvent)
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     {
         playerPresenter = GetComponent<PlayerPresenter>();
         mapManager = GetComponent<MapManager>();
-        enemyManager = GetComponent<EnemyManager>();
+        enemyPresenter = GetComponent<EnemyPresenter>();
         playerPresenter.Setup(playerModel);
     }
 
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
                 bool arrived = playerPresenter.movePlayer();
                 if (arrived && !gameModel.getShooted())
                 {
-                    enemyManager.createEnemy(playerPresenter.getSign(), playerPresenter.getPlayer(), gameModel.getEnemyCount());
+                    enemyManager.createEnemy(playerModel.GetSign(), playerPresenter.getPlayer(), gameModel.getEnemyCount());
                     gameModel.SetIsShooting(true);
                 }
 

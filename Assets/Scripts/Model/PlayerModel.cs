@@ -10,7 +10,13 @@ public class PlayerModel : MonoBehaviour
     {
         public bool shooting = true;
         public int sign = 1;
-        public double degree = 1;
+        public float degree = 1;
+        public float x1;
+        public float pos;
+        public float x2;
+        public float maxLife;
+        public float deadTorque;
+        public float deadUpForce;
         public int level = 1;
     }
 
@@ -44,6 +50,50 @@ public class PlayerModel : MonoBehaviour
     public double getDegree()
     {
         return data.degree;
+    }
+
+    public void setConfig(PlayerConfig playerConfig)
+    {
+        data.x1 = playerConfig.xRight;
+        data.x2 = playerConfig.xLeft;
+        data.maxLife = playerConfig.maxLife;
+        data.deadTorque = playerConfig.deadTorque;
+        data.deadUpForce = playerConfig.deadUpForce;
+        data.pos = playerConfig.xRight;
+    }
+
+    public float getX1()
+    {
+        return data.x1;
+    }
+
+    public float getX2()
+    {
+        return data.x2;
+    }
+
+    public float getMaxLife()
+    {
+        return data.maxLife;
+    }
+
+    public float getDeadTorque()
+    {
+        return data.deadTorque;
+    }
+
+    public float getDeadUpForce()
+    {
+        return data.deadUpForce;
+    }
+
+    public float getPos()
+    {
+        return data.pos;
+    }
+    public void setPos(float pos)
+    {
+        data.pos = pos;
     }
 
     public int GetLevel()

@@ -22,6 +22,7 @@ public class EnemyManager : MonoBehaviour {
 	private int sign;
 	private bool flip;
 	private double x2 = 0.2427;
+	
 	void Start ()
 	{
 	}
@@ -130,7 +131,7 @@ public class EnemyManager : MonoBehaviour {
 	}
 	private void flipEnemey()
 	{ 
-		Debug.Log(flip);
+//		Debug.Log(flip);
 		enemy.GetComponent<SpriteRenderer>().flipX = flip ;
 
 	}

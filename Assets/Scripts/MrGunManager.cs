@@ -42,12 +42,12 @@ public class MrGunManager : MonoBehaviour {
 
 		if (started)
 		{
-			Debug.Log("started");
+//			Debug.Log("started");
 			if (enemys == 0)
 			{
 				SceneManager.LoadScene("win");
 
-				Debug.Log("I WIN I WIN");
+//				Debug.Log("I WIN I WIN");
 				started = false;
 			}
 			else if (playerManager.isAlive())
@@ -99,7 +99,7 @@ public class MrGunManager : MonoBehaviour {
 				started = false;
 				SceneManager.LoadScene("lose");
 
-				Debug.Log("YOU ARE FUCKING DEAD");
+//				Debug.Log("YOU ARE FUCKING DEAD");
 			}
 
 		}

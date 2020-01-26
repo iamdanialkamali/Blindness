@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
 	
 	public void startGame()
 	{
-		Debug.Log("WTF");
+//		Debug.Log("WTF");
 		SceneManager.LoadScene("game");
 	}
 
