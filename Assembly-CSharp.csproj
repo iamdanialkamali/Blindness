@@ -60,11 +60,13 @@
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\ButtonHandler.cs" />
     <Compile Include="Assets\Scripts\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Configs\BlowConfig.cs" />
     <Compile Include="Assets\Scripts\Configs\CameraConfig.cs" />
     <Compile Include="Assets\Scripts\Configs\EnemyConfig.cs" />
     <Compile Include="Assets\Scripts\Configs\PlayerConfig.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyManager.cs" />
+    <Compile Include="Assets\Scripts\Extension\Fade.cs" />
     <Compile Include="Assets\Scripts\GameAudioManager.cs" />
     <Compile Include="Assets\Scripts\GunManager.cs" />
     <Compile Include="Assets\Scripts\MapManager.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Presenter\BlowPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\BulletPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\ButtonPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\EnemyPresenter.cs" />

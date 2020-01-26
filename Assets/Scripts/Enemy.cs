@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour {
             hited = true;
         	if (life <= 0)
         	{
+	            gameObject.transform.Blow();
 	            Destroy(enemyCollider);
 	            enemyRigibody.freezeRotation = false;
 	            enemyRigibody.bodyType = RigidbodyType2D.Dynamic;

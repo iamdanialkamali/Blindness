@@ -37,6 +37,7 @@ public class Player : MonoBehaviour {
 			life -= damage;
 			if (life <= 0)
 			{
+				gameObject.transform.Blow();
 				Destroy(GetComponent<Collider>());
 				GetComponent<Rigidbody2D>().freezeRotation = false;
 

@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34361e12349e3454894ac7125958857e, type: 3}
+  m_Name: BlowConfig
+  m_EditorClassIdentifier: 
+  fire: {fileID: 4997264944585373648, guid: 69319311403b9e7489e3a3591dd27d42, type: 3}

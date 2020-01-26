@@ -6,6 +6,7 @@ public class ServiceLocator : MonoBehaviour
 {
     public EventManager eventManager;
     public Ad adManager;
+    public BlowPresenter blowPresenter;
     private static ServiceLocator instance;
     public static ServiceLocator Instance;
 
@@ -25,5 +26,6 @@ public class ServiceLocator : MonoBehaviour
     {
         eventManager = new BasicEventManager();
         adManager = new GoogleAd();
+        blowPresenter = gameObject.AddComponent<BlowPresenter>();
     }
 }

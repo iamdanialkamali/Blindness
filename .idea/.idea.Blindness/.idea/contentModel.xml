@@ -60,12 +60,16 @@
           <e p="ButtonHandler.cs" t="Include" />
           <e p="CameraManager.cs" t="Include" />
           <e p="Configs" t="Include">
+            <e p="BlowConfig.cs" t="Include" />
             <e p="CameraConfig.cs" t="Include" />
             <e p="EnemyConfig.cs" t="Include" />
             <e p="PlayerConfig.cs" t="Include" />
           </e>
           <e p="enemy.cs" t="Include" />
           <e p="EnemyManager.cs" t="Include" />
+          <e p="Extension" t="Include">
+            <e p="Fade.cs" t="Include" />
+          </e>
           <e p="GameAudioManager.cs" t="Include" />
           <e p="GunManager.cs" t="Include" />
           <e p="MapManager.cs" t="Include" />
@@ -84,6 +88,7 @@
           <e p="PlayerManager.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="Presenter" t="Include">
+            <e p="BlowPresenter.cs" t="Include" />
             <e p="BulletPresenter.cs" t="Include" />
             <e p="ButtonPresenter.cs" t="Include" />
             <e p="EnemyPresenter.cs" t="Include" />
