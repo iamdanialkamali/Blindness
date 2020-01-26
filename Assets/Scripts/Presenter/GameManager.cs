@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    // Use this for initialization
+
     private MapManager mapManager;
-//    private PlayerManager playerPresenter;
     private PlayerPresenter playerPresenter;
     private PlayerModel playerModel = new PlayerModel();
     private EnemyManager enemyManager;
     private GameModel gameModel = new GameModel();
-
+    
+//    public void OnEvent(GameEvent gameEvent)
+//    {
+//        data.point += gameEvent.number;
+//
+//    }
     private void Awake()
     {
         playerPresenter = GetComponent<PlayerPresenter>();
@@ -24,8 +27,11 @@ public class GameManager : MonoBehaviour
 
     void Start ()
     {
+        playerModel.Load();
+        int level = playerModel.GetLevel();
         gameModel.SetStarted( true);
-        Vector3 playerloc = mapManager.genrateMap(20);
+        gameModel.setEnemyCount(playerModel.GetLevel());
+        Vector3 playerloc = mapManager.genrateMap((level*2)+5);
         playerPresenter.createPlayer(playerloc);
 		
     }
@@ -40,7 +46,8 @@ public class GameManager : MonoBehaviour
             if (gameModel.getEnemyCount() == 0)
             {
                 SceneManager.LoadScene("win");
-
+                playerModel.SetLevel(playerModel.GetLevel()+1);
+                playerModel.SaveData();     
                 Debug.Log("I WIN I WIN");
                 gameModel.SetStarted(false);
             }

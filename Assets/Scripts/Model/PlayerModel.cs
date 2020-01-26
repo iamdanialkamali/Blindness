@@ -11,6 +11,7 @@ public class PlayerModel : MonoBehaviour
         public bool shooting = true;
         public int sign = 1;
         public double degree = 1;
+        public int level = 1;
     }
 
     private PlayerData data = new PlayerData();
@@ -44,4 +45,28 @@ public class PlayerModel : MonoBehaviour
     {
         return data.degree;
     }
+
+    public int GetLevel()
+    {
+        return data.level;
+    }
+    public void SetLevel(int level)
+    {
+        data.level = level;
+    }
+
+    public void Load()
+    {
+        if (PlayerPrefs.HasKey("PlayerData"))
+        {
+            string loadString = PlayerPrefs.GetString("PlayerData");
+            data = JsonUtility.FromJson<PlayerData>(loadString);
+        }
+    }
+    public void SaveData()
+    {
+        string jsonString = JsonUtility.ToJson(data);
+        PlayerPrefs.SetString("PlayerData", jsonString);
+    }
+    
 }
