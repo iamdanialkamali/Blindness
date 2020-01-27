@@ -13,11 +13,7 @@ public class BulletPresenter : MonoBehaviour {
         bulletModel = model;
         bulletModel.setConfig(bulletConfig);
     }
-    void Start ()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("map").GetComponent<GameAudioManager>();
-        audioManager.playGunSound();
-    }
+
 	
     // Update is called once per frame
     void Update () {
