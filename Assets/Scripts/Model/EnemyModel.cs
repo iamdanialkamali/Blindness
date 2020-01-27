@@ -22,11 +22,23 @@ public class EnemyModel : MonoBehaviour
         public GameObject enemyPrefab;
         public GameObject player;
         public GameObject enemy;
-        
-    }
+        public bool hitted;
+        public float life;
+        public bool isShooting;
+        public bool isBoss;
+    }    
     
     private EnemyData data = new EnemyData();
-    
+
+    public void setIsBoss(bool state)
+    {
+        data.isBoss = state;
+    }
+    public bool getIsBoss()
+    {
+        return data.isBoss ;
+    }
+
     public void setConfig(EnemyConfig config)
     {
         data.x1 = config.xLeft;
@@ -38,8 +50,37 @@ public class EnemyModel : MonoBehaviour
         data.deadUpForce = config.deadUpForce;
         data.pos = config.xRight;
         data.enemyPrefab = config.enemyPrefab;
+        Debug.Log(data.enemyPrefab);
     }
 
+    public void setIsShooting(bool shooting)
+    {
+        data.isShooting = shooting;
+    }
+
+    public bool getIsShooting()
+    {
+        return data.isShooting;
+    }
+    public void setHitted(bool hitted)
+    {
+        data.hitted = hitted;
+    }
+
+    public bool getHitted()
+    {
+        return data.hitted;
+    }
+
+    public void setLife(float life)
+    {
+        data.life = life;
+    }
+
+    public float getLife()
+    {
+        return data.life;
+    }
     public void setEnemy(GameObject enemy)
     {
         data.enemy = enemy;

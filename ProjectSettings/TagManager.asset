@@ -13,6 +13,9 @@ TagManager:
   - enemyBullet
   - map
   - stair
+  - point
+  - life
+  - notif
   layers:
   - Default
   - TransparentFX

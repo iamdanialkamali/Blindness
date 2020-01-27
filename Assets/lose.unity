@@ -357,7 +357,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1074280631}
+      - m_Target: {fileID: 1074280639}
         m_MethodName: startGame
         m_Mode: 1
         m_Arguments:
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 735318438}
   m_Layer: 5
   m_Name: Text - RTLTMP
-  m_TagString: Untagged
+  m_TagString: point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 1074280632}
   - component: {fileID: 1074280631}
   - component: {fileID: 1074280638}
+  - component: {fileID: 1074280639}
   m_Layer: 5
   m_Name: Canvas (2)
   m_TagString: Untagged
@@ -1105,9 +1106,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074280630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fed069a7026d4091924dfc6aa65978b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1074280639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074280630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c46ac47c48a4452a0c2871be9fc2f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1228694805

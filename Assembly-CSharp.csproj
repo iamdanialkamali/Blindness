@@ -57,36 +57,41 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Bullet.cs" />
-    <Compile Include="Assets\Scripts\ButtonHandler.cs" />
-    <Compile Include="Assets\Scripts\CameraManager.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Scripts\Configs\BlowConfig.cs" />
+    <Compile Include="Assets\Scripts\Configs\BulletConfig.cs" />
     <Compile Include="Assets\Scripts\Configs\CameraConfig.cs" />
     <Compile Include="Assets\Scripts\Configs\EnemyConfig.cs" />
+    <Compile Include="Assets\Scripts\Configs\GameConfig.cs" />
+    <Compile Include="Assets\Scripts\Configs\GunConfig.cs" />
+    <Compile Include="Assets\Scripts\Configs\MapConfig.cs" />
     <Compile Include="Assets\Scripts\Configs\PlayerConfig.cs" />
-    <Compile Include="Assets\Scripts\Enemy.cs" />
-    <Compile Include="Assets\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\Extension\Fade.cs" />
-    <Compile Include="Assets\Scripts\GameAudioManager.cs" />
-    <Compile Include="Assets\Scripts\GunManager.cs" />
-    <Compile Include="Assets\Scripts\MapManager.cs" />
-    <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Model\Ad.cs" />
     <Compile Include="Assets\Scripts\Model\BasicEventManager.cs" />
+    <Compile Include="Assets\Scripts\Model\BulletModel.cs" />
     <Compile Include="Assets\Scripts\Model\EnemyModel.cs" />
     <Compile Include="Assets\Scripts\Model\EventListener.cs" />
     <Compile Include="Assets\Scripts\Model\GameEvent.cs" />
     <Compile Include="Assets\Scripts\Model\GameModel.cs" />
+    <Compile Include="Assets\Scripts\Model\GunModel.cs" />
+    <Compile Include="Assets\Scripts\Model\MapModel.cs" />
     <Compile Include="Assets\Scripts\Model\PlayerModel.cs" />
-    <Compile Include="Assets\Scripts\MrGunManager.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\PlayerManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Presenter\BlowPresenter.cs" />
+    <Compile Include="Assets\Scripts\Presenter\Bullet.cs" />
     <Compile Include="Assets\Scripts\Presenter\BulletPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\ButtonPresenter.cs" />
+    <Compile Include="Assets\Scripts\Presenter\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Presenter\Enemy.cs" />
     <Compile Include="Assets\Scripts\Presenter\EnemyPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Presenter\GameAudioManager.cs" />
     <Compile Include="Assets\Scripts\Presenter\GameAudioPresenter.cs" />
     <Compile Include="Assets\Scripts\Presenter\GameManager.cs" />
     <Compile Include="Assets\Scripts\Presenter\GoogleAd.cs" />
@@ -111,6 +116,7 @@
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\RTLTMPro\Ranges\NumberRanges.txt" />
+    <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
@@ -370,6 +376,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/GameClass/Blindness/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>D:/GameClass/Blindness/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

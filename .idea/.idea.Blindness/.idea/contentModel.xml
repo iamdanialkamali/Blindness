@@ -6,6 +6,20 @@
     <e p="D:\GameClass\Blindness" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Demigiant" t="Include">
+          <e p="DOTween" t="Include">
+            <e p="Modules" t="Include">
+              <e p="DOTweenModuleAudio.cs" t="Include" />
+              <e p="DOTweenModulePhysics.cs" t="Include" />
+              <e p="DOTweenModulePhysics2D.cs" t="Include" />
+              <e p="DOTweenModuleSprite.cs" t="Include" />
+              <e p="DOTweenModuleUI.cs" t="Include" />
+              <e p="DOTweenModuleUnityVersion.cs" t="Include" />
+              <e p="DOTweenModuleUtils.cs" t="Include" />
+            </e>
+            <e p="readme.txt" t="Include" />
+          </e>
+        </e>
         <e p="RTLTMPro" t="Include">
           <e p="Ranges" t="Include">
             <e p="LetterRanges.txt" t="Include" />
@@ -56,43 +70,41 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="Bullet.cs" t="Include" />
-          <e p="ButtonHandler.cs" t="Include" />
-          <e p="CameraManager.cs" t="Include" />
           <e p="Configs" t="Include">
             <e p="BlowConfig.cs" t="Include" />
+            <e p="BulletConfig.cs" t="Include" />
             <e p="CameraConfig.cs" t="Include" />
             <e p="EnemyConfig.cs" t="Include" />
+            <e p="GameConfig.cs" t="Include" />
+            <e p="GunConfig.cs" t="Include" />
+            <e p="MapConfig.cs" t="Include" />
             <e p="PlayerConfig.cs" t="Include" />
           </e>
-          <e p="enemy.cs" t="Include" />
-          <e p="EnemyManager.cs" t="Include" />
           <e p="Extension" t="Include">
             <e p="Fade.cs" t="Include" />
           </e>
-          <e p="GameAudioManager.cs" t="Include" />
-          <e p="GunManager.cs" t="Include" />
-          <e p="MapManager.cs" t="Include" />
-          <e p="MenuManager.cs" t="Include" />
           <e p="Model" t="Include">
             <e p="Ad.cs" t="Include" />
             <e p="BasicEventManager.cs" t="Include" />
+            <e p="BulletModel.cs" t="Include" />
             <e p="EnemyModel.cs" t="Include" />
             <e p="EventListener.cs" t="Include" />
             <e p="GameEvent.cs" t="Include" />
             <e p="GameModel.cs" t="Include" />
+            <e p="GunModel.cs" t="Include" />
+            <e p="MapModel.cs" t="Include" />
             <e p="PlayerModel.cs" t="Include" />
           </e>
-          <e p="MrGunManager.cs" t="Include" />
-          <e p="player.cs" t="Include" />
-          <e p="PlayerManager.cs" t="Include" />
-          <e p="PlayerMovement.cs" t="Include" />
           <e p="Presenter" t="Include">
             <e p="BlowPresenter.cs" t="Include" />
+            <e p="Bullet.cs" t="Include" />
             <e p="BulletPresenter.cs" t="Include" />
             <e p="ButtonPresenter.cs" t="Include" />
+            <e p="CameraManager.cs" t="Include" />
+            <e p="enemy.cs" t="Include" />
             <e p="EnemyPresenter.cs" t="Include" />
             <e p="EventManager.cs" t="Include" />
+            <e p="GameAudioManager.cs" t="Include" />
             <e p="GameAudioPresenter.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="GoogleAd.cs" t="Include" />

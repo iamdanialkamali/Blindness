@@ -20,10 +20,34 @@ public class PlayerModel : MonoBehaviour
         public float deadUpForce;
         public int level = 1;
         public int points;
+        public int life;
+        public int headShot = 0;
     }
-
+    
+    
     private PlayerData data = new PlayerData();
 
+    public void ResetHeadShot()
+    {
+        data.headShot = 0;
+    }
+    public int getHeadShot()
+    {
+        return data.headShot;
+    } 
+    public void AddHeadShot()
+    {
+        data.headShot++;
+    } 
+    public void setLife(int life)
+    {
+        data.life = life;
+    }
+
+    public int getLife()
+    {
+        return data.life;
+    }
     public void SetShooting(bool shooting)
     {
         data.shooting = shooting;
@@ -117,6 +141,7 @@ public class PlayerModel : MonoBehaviour
             PlayerData model =  JsonUtility.FromJson<PlayerData>(loadString);
             data.level = model.level;
             data.points = model.points;
+            Debug.Log("POINTS : "+model.points.ToString());
         }
     }
 

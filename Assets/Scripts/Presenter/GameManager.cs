@@ -1,42 +1,62 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using RTLTMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
-    private MapManager mapManager;
+    private MapPresenter mapManager;
     private PlayerPresenter playerPresenter;
+    private BulletPresenter bulletPresenter;
+    private EnemyPresenter enemyPresenter;
+    private GunPresenter gunPresenter;
+    private MapPresenter mapPresenter;
     private PlayerModel playerModel = new PlayerModel();
     private EnemyModel enemyModel = new EnemyModel();
-    private EnemyPresenter enemyPresenter;
+    private BulletModel bulletModel = new BulletModel();
     private GameModel gameModel = new GameModel();
-    
+    private GunModel gunModel = new GunModel();
+    private MapModel mapModel = new MapModel();
+    private RTLTextMeshPro point;
+    private RTLTextMeshPro life;
 
     private void Awake()
     {
-        playerPresenter = GetComponent<PlayerPresenter>();
-        mapManager = GetComponent<MapManager>();
+        playerPresenter = GetComponent<PlayerPresenter>();    
+        mapPresenter = GetComponent<MapPresenter>();
         enemyPresenter = GetComponent<EnemyPresenter>();
-        playerPresenter.Setup(playerModel);
-        enemyPresenter.Setup(enemyModel);
+        bulletPresenter = GetComponent<BulletPresenter>();
+        gunPresenter = GetComponent<GunPresenter>();
+        playerPresenter.Setup(playerModel,gunModel);
+        enemyPresenter.Setup(enemyModel,gunModel);
+        bulletPresenter.Setup(bulletModel);
+        gunPresenter.Setup(gunModel);
+        mapPresenter.Setup(mapModel);
     }
 
     void Start ()
     {
+        DOTween.Init();
+        point = GameObject.FindWithTag("point").GetComponent<RTLTextMeshPro>();
+        life = GameObject.FindWithTag("life").GetComponent<RTLTextMeshPro>();
         playerModel.Load();
         int level = playerModel.GetLevel();
         gameModel.SetStarted( true);
         gameModel.setEnemyCount(playerModel.GetLevel());
-        Vector3 playerloc = mapManager.genrateMap((int) level+6);
+        Vector3 playerloc = mapPresenter.genrateMap( level+6);
         playerPresenter.createPlayer(playerloc);
     }
     
     // Update is called once per frame
     void Update()
     {
+        point.text = playerModel.GetPoint().ToString();
+        life.text = playerModel.getLife().ToString();
         Debug.Log(gameModel.getEnemyCount());
         if (gameModel.getStarted())
         {

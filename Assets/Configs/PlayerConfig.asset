@@ -17,3 +17,6 @@ MonoBehaviour:
   maxLife: 100
   deadTorque: 210
   deadUpForce: 320
+  playerPrefab: {fileID: 1066492153979278, guid: aae446aceac1f9d409eab5dc2308694c,
+    type: 3}
+  linePrefab: {fileID: 1949354060438340, guid: 3e6e38338f3d6bc42a23f996b3b57b5b, type: 3}

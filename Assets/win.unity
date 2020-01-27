@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 454236231}
   m_Layer: 5
   m_Name: Text - RTLTMP
-  m_TagString: Untagged
+  m_TagString: point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 902939411}
   - component: {fileID: 902939410}
   - component: {fileID: 902939409}
-  - component: {fileID: 902939412}
+  - component: {fileID: 902939413}
   m_Layer: 5
   m_Name: next
   m_TagString: Untagged
@@ -680,7 +680,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 902939412}
+      - m_Target: {fileID: 902939413}
         m_MethodName: goToGame
         m_Mode: 1
         m_Arguments:
@@ -727,7 +727,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902939407}
   m_CullTransparentMesh: 0
---- !u!114 &902939412
+--- !u!114 &902939413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 902939407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36457eb4b36ab904cbfeb561278ad93b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c46ac47c48a4452a0c2871be9fc2f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1217839293
@@ -986,6 +986,7 @@ GameObject:
   - component: {fileID: 1980973251}
   - component: {fileID: 1980973248}
   - component: {fileID: 1980973249}
+  - component: {fileID: 1980973250}
   m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
@@ -1012,9 +1013,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980973247}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fed069a7026d4091924dfc6aa65978b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1980973250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980973247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c46ac47c48a4452a0c2871be9fc2f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1980973251
@@ -1244,7 +1257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1980973248}
+      - m_Target: {fileID: 1980973250}
         m_MethodName: startGame
         m_Mode: 1
         m_Arguments:

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
+using DG.Tweening;
 using UnityEngine;
 
 public class EnemyPresenter : MonoBehaviour
@@ -10,23 +11,27 @@ public class EnemyPresenter : MonoBehaviour
 	private EnemyModel enemyModel;
 	public EnemyConfig enemyConfig;
 	private GameObject enemy;
+	private GunModel gunModel;
 	private Enemy _enemy;
-	private GunManager gunManager;
+	private GunPresenter gunManager;
 	private Rigidbody2D enemyRigidbody;
 	private Transform enemyTransform;
 	void Start ()
 	{
 	}
 
-	public void Setup(EnemyModel model)
+	public void Setup(EnemyModel model,GunModel gunModel)
 	{
 		enemyModel = model;
 		enemyModel.setConfig(enemyConfig);
+
+		this.gunModel = gunModel;
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+	{
 	}
 
 	public bool isHited()
@@ -39,15 +44,17 @@ public class EnemyPresenter : MonoBehaviour
 		{	
 			enemyModel.setPlayer(gamePlayer);
 			enemy = Instantiate(enemyModel.GetEnemyPrefab());
-
 			_enemy = enemy.GetComponent<Enemy>();
+			_enemy.Setup(enemyModel);
 			if (enemyCount == 1)
 			{
-				_enemy.setLife(200);
+				_enemy.setLife((int)enemyModel.getBossEnemyLife());
+				enemyModel.setIsBoss(true);
 			}
 			
 			enemyModel.setSign(playerSign);
-			gunManager = enemy.GetComponent<GunManager>();
+			gunManager = enemy.GetComponent<GunPresenter>();
+			gunManager.Setup(gunModel);
 			enemyRigidbody = enemy.GetComponent<Rigidbody2D>();
 			enemyTransform = enemy.GetComponent<Transform>();
 			int lastLayerId = enemyModel.getPlayer().GetComponent<SpriteRenderer>().sortingOrder;

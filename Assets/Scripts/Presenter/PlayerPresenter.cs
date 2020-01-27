@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerPresenter : MonoBehaviour,EventListener {
 
 	// Use this for initialization
-	public GameObject playerPrefab;
-	public GameObject linePrefab;
 	private Rigidbody2D playerRigidbody;
 	private Transform playerTransform;
 	private SpriteRenderer playerSpriteRenderer;
-	private GunManager gunManager;
+	private GunPresenter gunManager;
 	private Transform lineTransform;
 	private GameObject player;
 	private Player _player;
+	private GunModel gunModel;
 	private GameObject line;
 	private PlayerModel playerModel;
 	private GameObject ground;
@@ -22,17 +22,30 @@ public class PlayerPresenter : MonoBehaviour,EventListener {
 	
 	public void OnEvent(GameEvent gameEvent)
 	{
+		
 		if (gameEvent.GetType() == typeof(PointEvent))
 		{
+			if (gameEvent.number == ServiceLocator.Instance.gameConfig.headShotPoint)
+			{
+				ServiceLocator.Instance.eventManager.Propagate(new NotifEvent("HeadShot"));
+				playerModel.AddHeadShot();
+				if (playerModel.getHeadShot() == 5)
+				{
+					playerModel.setLife(playerConfig.maxLife);
+					playerModel.ResetHeadShot();
+				} 
+			}
 			playerModel.AddPoint(gameEvent.number);
-			
+			Debug.Log("POINTS : "+playerModel.GetPoint().ToString());
 		}
+		
 
 	}
-	public void Setup(PlayerModel model)
+	public void Setup(PlayerModel model,GunModel gunModel)
 	{
 		playerModel = model;
 		playerModel.setConfig(playerConfig);
+		this.gunModel = gunModel;
 	}
 	void Start ()
 	{
@@ -41,7 +54,8 @@ public class PlayerPresenter : MonoBehaviour,EventListener {
 	
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 //		Debug.Log("WTTTTTTTTTTTTTTG" + playerModel.playerConfig.xLeft);
 	}
 	
@@ -49,9 +63,9 @@ public class PlayerPresenter : MonoBehaviour,EventListener {
 	public void createPlayer(Vector3 loc)
 	{
 		
-		player = Instantiate(playerPrefab);
+		player = Instantiate(playerConfig.playerPrefab);
 		player.transform.position = loc - new Vector3(10,1);
-		line = Instantiate(linePrefab);
+		line = Instantiate(playerConfig.linePrefab);
 		line.GetComponentInChildren<SpriteRenderer>().sortingOrder = -10;
 		lineTransform = line.GetComponent<Transform>();
 		playerRigidbody = player.GetComponent<Rigidbody2D>();
@@ -59,8 +73,11 @@ public class PlayerPresenter : MonoBehaviour,EventListener {
 		playerTransform = player.transform;
 		_player = player.GetComponent<Player>();
 		playerRigidbody.freezeRotation = true;
-		gunManager = player.GetComponent<GunManager>();
-		_player.setup(playerModel.getMaxLife(), playerModel.getDeadTorque(), playerModel.getDeadUpForce());
+		gunManager = player.GetComponent<GunPresenter>();
+		gunManager.Setup(gunModel);
+		playerModel.setLife(playerConfig.maxLife);
+//		_player.setup(playerModel.getMaxLife(), playerModel.getDeadTorque(), playerModel.getDeadUpForce());
+		_player.Setup(playerModel);
 	}
 
 	public GameObject getPlayer()
@@ -172,7 +189,8 @@ public class PlayerPresenter : MonoBehaviour,EventListener {
 	}
 
 	public void shoot()
-	{
+	{	
+		
 		if(gunManager != null){
 			gunManager.shootOnLine(playerTransform,lineTransform);
 			hideLine();
